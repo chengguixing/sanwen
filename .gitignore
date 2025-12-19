@@ -1,0 +1,17 @@
+# IDE
+.idea/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build outputs
+target/
+build/
+dist/
