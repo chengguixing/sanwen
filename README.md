@@ -1,73 +1,111 @@
-# React + TypeScript + Vite
+# AI 你画我猜网页游戏
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+这是一个在线你画我猜游戏，玩家可以在画布上作画，AI 系统负责猜测画的是什么内容。
 
-Currently, two official plugins are available:
+## 技术栈
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **脚手架**: Vite
+- **前端**: React + TypeScript
+- **画布**: HTML5 Canvas
+- **后端**: Node.js + Express
+- **AI 集成**: OpenAI Vision API (模拟实现)
 
-## React Compiler
+## 项目结构
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+sanwen/
+├── src/                   # 前端源代码
+│   ├── components/        # React 组件
+│   │   ├── Canvas.tsx     # 画布组件
+│   │   └── CanvasTools.tsx # 画布工具组件
+│   ├── pages/             # 页面组件
+│   │   └── HomePage.tsx   # 主页面
+│   ├── utils/             # 工具函数
+│   │   └── api.ts         # API 请求封装
+│   └── ...                # 其他前端文件
+├── server/                # 后端源代码
+│   ├── src/
+│   │   ├── controllers/   # 控制器
+│   │   ├── middleware/    # 中间件
+│   │   ├── routes/        # 路由
+│   │   └── index.ts       # 服务器入口
+│   └── ...                # 其他后端文件
+└── task.md               # 任务列表
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 快速开始
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 前端启动
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. 安装依赖：
+   ```bash
+   npm install
+   ```
+
+2. 启动开发服务器：
+   ```bash
+   npm run dev
+   ```
+
+3. 在浏览器中打开 `http://localhost:5173`
+
+### 后端启动
+
+1. 进入服务器目录：
+   ```bash
+   cd server
+   ```
+
+2. 安装依赖：
+   ```bash
+   npm install
+   ```
+
+3. 构建项目：
+   ```bash
+   npm run build
+   ```
+
+4. 启动服务器：
+   ```bash
+   npm start
+   ```
+
+5. 服务器将在 `http://localhost:3001` 运行
+
+## 游戏玩法
+
+1. 点击"开始游戏"按钮开始新游戏
+2. 在画布上绘制任何图像
+3. 使用工具栏调整画笔颜色和大小
+4. 点击"提交猜测"按钮，让AI猜测你画的是什么
+5. 查看AI的猜测结果和置信度
+6. 在右侧查看游戏历史和得分
+
+## 功能特性
+
+- ✅ 基本绘画功能（线条、颜色、画笔大小）
+- ✅ 画布工具（颜色选择、画笔大小、清空、撤销）
+- ✅ 游戏控制（开始游戏、提交猜测）
+- ✅ AI 猜测模拟（使用模拟数据）
+- ✅ 游戏历史记录
+- ✅ 得分系统
+- ✅ 响应式设计
+
+## 未来计划
+
+- [ ] 集成真实的 OpenAI Vision API
+- [ ] 添加游戏计时功能
+- [ ] 实现难度级别和词语提示
+- [ ] 添加游戏音效和视觉反馈
+- [ ] 优化用户体验
+- [ ] 添加单元测试和端到端测试
+- [ ] 部署到云服务
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 许可证
+
+MIT
